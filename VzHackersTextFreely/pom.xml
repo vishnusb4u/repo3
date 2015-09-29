@@ -27,7 +27,7 @@
             </includes>
           </resource>
         </resources>
-          <failOnMissingWebXml>true</failOnMissingWebXml>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
       </plugin>
     </plugins>
