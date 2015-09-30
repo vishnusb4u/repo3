@@ -17,10 +17,10 @@ public class OfferDetailsModular extends DBConnection{
 	//method to execute the Billing Query and list out to the console
 	public static void runQuery()
 	{		
-		//System.out.println("Enter Customer's MTN Number to show the Offer details");
+		System.out.println("Enter Customer's MTN Number to show the Offer details");
 		Scanner scan = new Scanner(System.in);
 		String mtnnum = scan.nextLine();
-		////System.out.println("You entered string "+mtnnum);
+		//System.out.println("You entered string "+mtnnum);
 		
 		try{
 				//Executing a query
@@ -70,7 +70,7 @@ public class OfferDetailsModular extends DBConnection{
 			         
 			         System.out.print("\n");
 			         
-			         //System.out.println("Dear Customer, you are eligible for the offer amount of $"+cust_Offer_Price+" use before "+cust_offer_endDate+" when you are paying next bill");
+			         System.out.println("Dear Customer, you are eligible for the offer amount of $"+cust_Offer_Price+" use before "+cust_offer_endDate+" when you are paying next bill");
 			    }
 			}catch(SQLException se){
 		         se.printStackTrace();
@@ -78,43 +78,43 @@ public class OfferDetailsModular extends DBConnection{
 	}
 
 
-//	public static void main(String[] args) {
-//		try
-//		{
-//			fis = new FileInputStream("db.properties");
-//            props.load(fis);
-//            
-//          //Registering MYSQL JDBC driver
-//			Class.forName(props.getProperty("DB_DRIVER_CLASS"));		
-//			//System.out.println("Connecting to database...");
-//			
-//			openDBConnection();
-//			runQuery();
-//		
-//		    rs.close();
-//		}
-//		catch(IOException ioe){
-//			ioe.printStackTrace();
-//		}
-//		catch(ClassNotFoundException cnfe){	
-//			cnfe.printStackTrace();
-//		}
-//		catch(SQLException sqe){	
-//			sqe.printStackTrace();
-//		}
-//		finally{
-//			try{
-//					if(st!=null)
-//						conn.close();
-//				}catch(SQLException se){
-//		      }
-//			try{
-//					if(conn!=null)
-//						conn.close();
-//				}catch(SQLException se){
-//		         se.printStackTrace();
-//		      }
-//		   }//end of finally block for closing all other resources		   	
-//	}
+	public static void main(String[] args) {
+		try
+		{
+			fis = new FileInputStream("db.properties");
+            props.load(fis);
+            
+          //Registering MYSQL JDBC driver
+			Class.forName(props.getProperty("DB_DRIVER_CLASS"));		
+			System.out.println("Connecting to database...");
+			
+			openDBConnection();
+			runQuery();
+		
+		    rs.close();
+		}
+		catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		catch(ClassNotFoundException cnfe){	
+			cnfe.printStackTrace();
+		}
+		catch(SQLException sqe){	
+			sqe.printStackTrace();
+		}
+		finally{
+			try{
+					if(st!=null)
+						conn.close();
+				}catch(SQLException se){
+		      }
+			try{
+					if(conn!=null)
+						conn.close();
+				}catch(SQLException se){
+		         se.printStackTrace();
+		      }
+		   }//end of finally block for closing all other resources		   	
+	}
 
 }

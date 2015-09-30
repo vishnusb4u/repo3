@@ -25,7 +25,7 @@ public class KeyWordMapModular extends DBConnection {
             
           //Registering MYSQL JDBC driver
 			Class.forName("com.mysql.jdbc.Driver");			
-			//System.out.println("Connecting to database...");
+			System.out.println("Connecting to database...");
 			
 			openDBConnection();
 		
@@ -33,7 +33,7 @@ public class KeyWordMapModular extends DBConnection {
 			st = conn.prepareStatement(sql);
 			rs = st.executeQuery();
 			while(rs.next()){
-				//System.out.println(rs.getString("word")+"-"+rs.getString("keyname"));
+				System.out.println(rs.getString("word")+"-"+rs.getString("keyname"));
 				map.put(rs.getString("word"),rs.getString("keyname"));
 			}
 			rs.close();
