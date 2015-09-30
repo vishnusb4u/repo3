@@ -21,7 +21,7 @@ public class OperationModular extends DBConnection {
             
           //Registering MYSQL JDBC driver
             Class.forName("com.mysql.jdbc.Driver");	
-			System.out.println("Connecting to database...");
+			//System.out.println("Connecting to database...");
 			
 			openDBConnection();
 		
@@ -29,7 +29,7 @@ public class OperationModular extends DBConnection {
 			st = conn.prepareStatement(sql);
 			rs = st.executeQuery();
 			while(rs.next()){
-				System.out.println(rs.getString("template"));
+				//System.out.println(rs.getString("template"));
 				template = rs.getString("template");
 			}
 			rs.close();

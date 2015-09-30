@@ -16,10 +16,10 @@ public class PlanDetailsModular extends DBConnection{
 	//method to execute the Billing Query and list out to the console
 	public static void runQuery()
 	{
-		System.out.println("Enter MTN Number");
+		//System.out.println("Enter MTN Number");
 		Scanner scan = new Scanner(System.in);
 		String mtnnum = scan.nextLine();
-		//System.out.println("You entered string "+mtnnum);
+		////System.out.println("You entered string "+mtnnum);
 		
 		try{
 				//Executing a query
@@ -71,42 +71,42 @@ public class PlanDetailsModular extends DBConnection{
 	}
 
 
-	public static void main(String[] args) {
-		try
-		{
-			fis = new FileInputStream("db.properties");
-            props.load(fis);
-            
-          //Registering MYSQL JDBC driver
-			Class.forName(props.getProperty("DB_DRIVER_CLASS"));		
-			System.out.println("Connecting to database...");
-			
-			openDBConnection();
-			runQuery();
-		
-		    rs.close();
-		}
-		catch(IOException ioe){
-			ioe.printStackTrace();
-		}
-		catch(ClassNotFoundException cnfe){	
-			cnfe.printStackTrace();
-		}
-		catch(SQLException sqe){	
-			sqe.printStackTrace();
-		}
-		finally{
-			try{
-					if(st!=null)
-						conn.close();
-				}catch(SQLException se){
-		      }
-			try{
-					if(conn!=null)
-						conn.close();
-				}catch(SQLException se){
-		         se.printStackTrace();
-		      }
-		   }//end of finally block for closing all other resources		   	
-	}
+//	public static void main(String[] args) {
+//		try
+//		{
+//			fis = new FileInputStream("db.properties");
+//            props.load(fis);
+//            
+//          //Registering MYSQL JDBC driver
+//			Class.forName(props.getProperty("DB_DRIVER_CLASS"));		
+//			//System.out.println("Connecting to database...");
+//			
+//			openDBConnection();
+//			runQuery();
+//		
+//		    rs.close();
+//		}
+//		catch(IOException ioe){
+//			ioe.printStackTrace();
+//		}
+//		catch(ClassNotFoundException cnfe){	
+//			cnfe.printStackTrace();
+//		}
+//		catch(SQLException sqe){	
+//			sqe.printStackTrace();
+//		}
+//		finally{
+//			try{
+//					if(st!=null)
+//						conn.close();
+//				}catch(SQLException se){
+//		      }
+//			try{
+//					if(conn!=null)
+//						conn.close();
+//				}catch(SQLException se){
+//		         se.printStackTrace();
+//		      }
+//		   }//end of finally block for closing all other resources		   	
+//	}
 }

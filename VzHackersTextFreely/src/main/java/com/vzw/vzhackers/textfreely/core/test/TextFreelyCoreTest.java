@@ -1,9 +1,7 @@
 package com.vzw.vzhackers.textfreely.core.test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -34,10 +32,37 @@ public class TextFreelyCoreTest   {
 	}
 	
 	@Test
-	public void testProcess() {
+	public void testProcessUnknown() {
 		core = new TextFreelyCore();
-		ProcessTextResponse rep = core.process("send me my plan details and last month bill date", "9876543210");
+		ProcessTextResponse rep = core.process("i want ot complaint on vz", "7871234567");
+		Assert.assertEquals("FAILURE",rep.getStatusCode());
+	}
+	@Test
+	public void testProcessPlan() {
+		core = new TextFreelyCore();
+		ProcessTextResponse rep = core.process("WHAT IS MY PLAN", "7871234567");
+//		System.out.println(rep.getResponseMessage());
+		Assert.assertEquals("SUCCESS",rep.getStatusCode());
+	}
+	@Test
+	public void testProcessBal() {
+		core = new TextFreelyCore();
+		ProcessTextResponse rep = core.process("give my balance BILL", "7871234567");
+		//System.out.println(rep.getResponseMessage());
+		Assert.assertEquals("SUCCESS",rep.getStatusCode());
+	}
+	@Test
+	public void testProcessaLT() {
+		core = new TextFreelyCore();
+		ProcessTextResponse rep = core.process("WHAT IS ALT PHONE", "7871234567");
 		System.out.println(rep.getResponseMessage());
+		Assert.assertEquals("SUCCESS",rep.getStatusCode());
+	}
+	@Test
+	public void testProcessPromo() {
+		core = new TextFreelyCore();
+		ProcessTextResponse rep = core.process("give my promotion info", "7871234567");
+		//System.out.println(rep.getResponseMessage());
 		Assert.assertEquals("SUCCESS",rep.getStatusCode());
 	}
 	@Test
@@ -79,8 +104,8 @@ public class TextFreelyCoreTest   {
 		childGraph.add(ch2);
 		childGraph.add(ch3);
 		
-		String key = core.findOperation(keyWordList, root);
-		System.out.println(key);
+		String key = core.findOperation(keyWordList, root,0);
+		//System.out.println(key);
 		Assert.assertNotNull(key);
 	}
 
