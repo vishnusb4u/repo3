@@ -7,6 +7,7 @@ public class ProcessTextResponse {
 
 	private String responseMessage;
 	private String operation;
+	private String statusCode;
 
 	public String getResponseMessage() {
 		return responseMessage;
@@ -22,6 +23,14 @@ public class ProcessTextResponse {
 
 	public void setOperation(String operation) {
 		this.operation = operation;
+	}
+
+	public String getStatusCode() {
+		return statusCode;
+	}
+
+	public void setStatusCode(String statusCode) {
+		this.statusCode = statusCode;
 	}
 
 }
