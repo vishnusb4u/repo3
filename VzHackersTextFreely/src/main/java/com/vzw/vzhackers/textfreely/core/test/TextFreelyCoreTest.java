@@ -20,7 +20,6 @@ public class TextFreelyCoreTest   {
 	
 	TextFreelyCore core;
 	@Test
-	@Ignore
 	public void testExtractKeyWordFound() {
 		core = new TextFreelyCore();
 		List<String> key = core.extractKeyWord("balance info needed");
@@ -30,8 +29,8 @@ public class TextFreelyCoreTest   {
 	@Test
 	public void testExtractKeyWordNotFound() {
 		core = new TextFreelyCore();
-		List<String> key = core.extractKeyWord("");
-		Assert.assertNotNull(key);
+		List<String> key = core.extractKeyWord("I want to complaint");
+		Assert.assertNull(key);
 	}
 	
 	@Test
