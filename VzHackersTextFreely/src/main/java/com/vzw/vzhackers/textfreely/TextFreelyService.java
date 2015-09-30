@@ -8,6 +8,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.vzw.vzhackers.textfreely.core.TextFreelyCore;
 import com.vzw.vzhackers.textfreely.dto.ProcessTextRequest;
 import com.vzw.vzhackers.textfreely.dto.ProcessTextResponse;
 
@@ -21,8 +22,8 @@ public class TextFreelyService {
 	public ProcessTextResponse processTest(ProcessTextRequest r) {
 
 		ProcessTextResponse resp = new ProcessTextResponse();
-		resp.setOperation("BAL");
-		resp.setResponseMessage("balance response");
+		TextFreelyCore core = new TextFreelyCore();
+		resp = core.process(r.getText(), r.getMtn());
 
 		return resp;
 

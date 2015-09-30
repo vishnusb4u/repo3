@@ -16,9 +16,8 @@ public class DBConnection {
 		{
 			try{
 					//Opening a connection
-					conn = DriverManager.getConnection(props.getProperty("DB_URL"),
-												   	   props.getProperty("DB_USERNAME"),
-												       props.getProperty("DB_PASSWORD"));
+					conn = DriverManager.getConnection("jdbc:mysql://113.128.163.34:3306/test_database",
+												   	   "sqluser","sqluserpw");
 					System.out.println("DB hit successful");
 				}catch(SQLException sqle){
 					sqle.printStackTrace();

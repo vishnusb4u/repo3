@@ -8,6 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.junit.Ignore;
+
+import com.vzw.vzhackers.textfreely.db.KeyOpGraphModular;
+import com.vzw.vzhackers.textfreely.db.KeyWordMapModular;
+import com.vzw.vzhackers.textfreely.db.OperationModular;
 import com.vzw.vzhackers.textfreely.dto.ProcessTextResponse;
 
 public class TextFreelyCore {
@@ -16,8 +21,8 @@ public class TextFreelyCore {
 	public static KeyOpGraph root;
 
 	static {
-		keyWordMap = cacheKeyWordMap();
-		root = generateKeyOpGraph();
+		keyWordMap = KeyWordMapModular.getKeyWordMap();
+		root = KeyOpGraphModular.getKeyOpGraph();
 	}
 
 	public ProcessTextResponse process(String inputText, String mtn) {
@@ -33,6 +38,7 @@ public class TextFreelyCore {
 
 		// Extracting valid keywords from input text
 		extractedKeys = extractKeyWord(inputText);
+		
 
 		// Extracting customer input if any
 		extractedData = extractDataIfAny(inputText);
@@ -41,7 +47,7 @@ public class TextFreelyCore {
 		operation = findOperation(extractedKeys, root);
 		if (operation != null) {
 			// Getting operation response template
-			template = getTemplate(operation);
+			template = OperationModular.getTemplate(operation);
 
 			responseMsg = operate(operation, extractedData, mtn, template);
 
@@ -82,9 +88,9 @@ public class TextFreelyCore {
 		return map;
 	}
 
-	private String operate(String operation, List<String> inputData, String template, String template2) {
+	private String operate(String operation, List<String> inputData, String mtn, String template) {
 		// TODO Auto-generated method stub
-		return null;
+		return "opt="+operation+"|"+template;
 	}
 
 	public List<String> extractKeyWord(String inputText) {
@@ -94,11 +100,12 @@ public class TextFreelyCore {
 		inputText = removePunctuation(inputText.toUpperCase());
 		String[] wordArr = inputText.split(" ");
 		ArrayList<String> wordList = new ArrayList<String>(Arrays.asList(wordArr));
-
+		System.out.println(wordList);
 		itr = keyWordMap.entrySet().iterator();
 
 		while (itr.hasNext()) {
 			Entry<String, String> element = itr.next();
+			System.out.println("--"+element.getKey().toUpperCase());
 			if (wordList.contains(element.getKey().toUpperCase())) {
 				keyWords.add(element.getValue());
 			}

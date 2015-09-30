@@ -13,6 +13,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.vzw.vzhackers.textfreely.core.KeyOpGraph;
 import com.vzw.vzhackers.textfreely.core.TextFreelyCore;
+import com.vzw.vzhackers.textfreely.dto.ProcessTextResponse;
 
 @RunWith(MockitoJUnitRunner.class)  
 
@@ -25,7 +26,6 @@ public class TextFreelyCoreTest   {
 		List<String> key = core.extractKeyWord("balance info needed");
 		Assert.assertNotNull(key);
 	}
-	
 	@Test
 	public void testExtractKeyWordNotFound() {
 		core = new TextFreelyCore();
@@ -33,6 +33,13 @@ public class TextFreelyCoreTest   {
 		Assert.assertNull(key);
 	}
 	
+	@Test
+	public void testProcess() {
+		core = new TextFreelyCore();
+		ProcessTextResponse rep = core.process("send me my plan details and last month bill date", "9876543210");
+		System.out.println(rep.getResponseMessage());
+		Assert.assertEquals("SUCCESS",rep.getStatusCode());
+	}
 	@Test
 	public void testFindOpt() {
 		core = new TextFreelyCore();
@@ -77,31 +84,5 @@ public class TextFreelyCoreTest   {
 		Assert.assertNotNull(key);
 	}
 
-	private KeyOpGraph populateKeyOp() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private Map<String, String> populateKeyMap() {
-		
-		Map<String, String> map = new HashMap<String,String>();
-		map.put( "Balance","BAL");
-		map.put("detail","INFO");
-		map.put("information","INFO");
-		map.put("info", "INFO");
-		map.put("offer", "PROMO");
-		map.put("promotion", "PROMO");
-		map.put("promo", "PROMO");
-		map.put("promocode", "PROMO");
-		map.put("data", "DATA");
-		map.put("pay", "PAY");
-		map.put("bill", "BILL");
-		map.put("invoice", "BILL");
-		map.put("billing", "BILL");
-		
-		
-		
-		return null;
-	}
 
 }
